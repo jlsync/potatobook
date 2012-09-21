@@ -2,6 +2,11 @@
 .cell {
   display: inline-block; 
   width: 15%;
+  margin: 2px;
   height: 30px;
   border: 1px solid brown;  }
 
+.message {
+  height: 30px;
+  width: 100%
+  border: 1px solid green; }
