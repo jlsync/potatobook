@@ -25,6 +25,9 @@ class Cell
     if @state == "blank"
       @state = "taken"
       score = @game.score(@)
+      @game.scores[@owner] ?= 0
+      @game.scores[@owner] += score
+      @game.updateScores()
       message("good play at #{@x}, #{@y}, score: #{score}")
       sendMove(@x, @y)
     else
@@ -47,8 +50,7 @@ class Game
     @size = size
     @initialize_grid()
     @$game = $('#game')
-    @my_sore = 0
-    @their_sore = 0
+    @scores = []
     @draw()
 
   initialize_grid: ->
@@ -97,6 +99,11 @@ class Game
     # return the sum of three possible rows
     return score
 
+  updateScores: ->
+    text = ""
+    for k,v of @scores
+      text += "#{k}:#{v} "
+    @$scores.text text
 
   draw: ->
     @$game.empty()
@@ -107,6 +114,9 @@ class Game
         $row.append cell.toHtml()
       @$game.append $row
       y += 1
+    @$scores = $("<div id=\"scores\"/>")
+    @$game.append @$scores
+    @updateScores()
 
       
 

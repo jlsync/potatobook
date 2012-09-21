@@ -3,8 +3,9 @@
   display: inline-block; 
   width: 15%;
   margin: 2px;
-  height: 30px;
+  height: 50px;
   background: #EE9999;
+  overflow: hidden;
   border: 1px solid brown;  }
 
 .message {
