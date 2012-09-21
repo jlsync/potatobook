@@ -11,15 +11,17 @@ class Cell
     @x = x
     @y = y
     @game = game
+    @owner = '______'
     @state = state
 
   toHtml: ->
-    @$html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
+    @$html = $("<div class=\"cell\ #{@state}\">#{@owner}</div>")
     cell = @
     @$html.on 'click', ->
-      cell.clicked()
+      cell.clicked("me")
 
-  clicked: () ->
+  clicked: (clicked_by) ->
+    @owner = clicked_by
     if @state == "blank"
       @state = "taken"
       score = @game.score(@)
@@ -41,7 +43,7 @@ window.Cell = Cell
 
 class Game
 
-  constructor: (size) ->
+  constructor: (size = 5) ->
     @size = size
     @initialize_grid()
     @$game = $('#game')
