@@ -15,7 +15,9 @@ class Cell
 
   toHtml: ->
     @$html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
-    @$html.on 'click', @clicked
+    cell = @
+    @$html.on 'click', ->
+      cell.clicked()
 
   clicked: () ->
     if @state == "blank"
