@@ -15,7 +15,9 @@ class Cell
 
   toHtml: ->
     @$html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
-    @$html.on 'click', @clicked
+    cell = @
+    @$html.on 'click', ->
+      cell.clicked()
 
   clicked: () ->
     if @state == "blank"
@@ -28,6 +30,7 @@ class Cell
     @$html.replaceWith @toHtml()
 
 
+window.Cell = Cell
 
 # The Game grid of Cells [y,x] ( y down, x across)
 #
