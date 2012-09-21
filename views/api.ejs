@@ -32,7 +32,6 @@
       events.innerHTML += "<strong>"+user.name+"</strong>, joined<br/>";
     }
 
-
     channel.bind('pusher:subscription_succeeded', function(data) {
       channel.trigger('client-joined', user);
       printJoined(user);
@@ -41,7 +40,9 @@
     channel.bind('client-moved', printMove);
 
     function sendMove() {
-      var move = {x: Math.floor(Math.random()*5), y:Math.floor(Math.random()*5), user: user};
+      var move = {x: Math.floor(Math.random()*5),
+                  y:Math.floor(Math.random()*5),
+                  user: user};
       printMove(move);
       channel.trigger('client-moved', move);
     }
