@@ -1,12 +1,8 @@
-
 /**
  * Module dependencies.
  */
-
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
-  , api = require('./routes/api')
   , http = require('http')
   , path = require('path');
 
@@ -33,10 +29,8 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/users', user.list);
-app.get('/api/', api.index);
-app.get('/api/start', api.start);
-app.post('/api/pusher_auth', api.pusher_auth);
+app.get('/api/start_game', routes.start_game);
+app.post('/api/pusher_auth', routes.pusher_auth);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
