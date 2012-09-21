@@ -9,11 +9,14 @@
     Pusher.log = function(message) {
       if (window.console && window.console.log) window.console.log(message);
     };
-
     // Flash fallback logging - don't include this in production
     WEB_SOCKET_DEBUG = true;
 
     var pusher = new Pusher('10408a3c620b760edd45');
+
+    Pusher.channel_auth_endpoint = '/api/pusher_auth';
+    var privateChannel = pusher.subscribe('private-channel');
+
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data) {
       alert(data);
