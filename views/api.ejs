@@ -13,17 +13,37 @@
     WEB_SOCKET_DEBUG = true;
 
     var pusher = new Pusher('10408a3c620b760edd45');
-
     Pusher.channel_auth_endpoint = '/api/pusher_auth';
-    var privateChannel = pusher.subscribe('private-channel');
+    var channel = pusher.subscribe('<%= channel %>');
 
+    channel.bind('joined', function(data) {
+      console.log( "******* joined :: ", data);
+    });
+
+    channel.bind('moved', function(data) {
+      console.log( "******* select :: ", data);
+    });
+
+    function sendMove() {
+      console.log( "Hello" );
+    };
+
+/*
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data) {
       alert(data);
     });
+*/
   </script>
 </head>
 <body>
 <h1>API Test</h1>
+
+<div id="events">
+
+</div>
+
+<button onclick="sendMove()">move</button>
+
 </body>
 </html>

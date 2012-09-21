@@ -6,9 +6,30 @@ var pusher = new Pusher({
   secret: '0cc6684219419a631339'
 });
 
+var gameCount = 0
+  , awaitingGame = null;
+
 exports.index = function(req, res){
-  res.render('api', { title: 'API Test' });
+  var privateChannel;
+  if( !!awaitingGame ) {
+    privateChannel = awaitingGame;
+    awaitingGame = null;
+  } else {
+    privateChannel = awaitingGame = "private-game"+(gameCount++)
+  }
+
+  res.render('api', { title: 'API Test', channel: privateChannel});
 };
+
+exports.pusher_auth = function(req, res){
+  res.send(pusher.auth(req.body['socket_id'], req.body['channel_name']));
+};
+
+
+
+
+
+
 
 exports.start = function(req, res){
 
@@ -19,14 +40,5 @@ exports.start = function(req, res){
     console.log( "send event", err);
   });
 
-
   res.send("message sent...");
-};
-
-
-exports.pusher_auth = function(req, res){
-  var result = pusher.auth(req.body['socket_id'], req.body['channel_name']);
-//  console.log( req );
-  console.log( "private connection..." );
-  res.send(result);
 };
