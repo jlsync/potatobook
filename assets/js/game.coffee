@@ -43,7 +43,7 @@ window.Cell = Cell
 
 class Game
 
-  constructor: (size) ->
+  constructor: (size = 5) ->
     @size = size
     @initialize_grid()
     @$game = $('#game')

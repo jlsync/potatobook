@@ -1,3 +1,3 @@
-$ ->
-  window.game = new Game(5)
+#$ ->
+#  window.game = new Game(5)
 
