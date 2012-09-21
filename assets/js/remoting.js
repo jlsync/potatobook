@@ -3,22 +3,15 @@
   var pusher = new Pusher('10408a3c620b760edd45')
     , channel = null;
 
-  // User details need to be set by mobile app
-  var user = {id:'123',
-              name:"Jo Blogs",
-              picture:"https://secure.gravatar.com/avatar/83495e6101c2561c3f7332db3bbe82f9?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png"};
-
   function printMove(move) {
-    var messages = document.getElementById("message");
-    messages.innerHTML += "<strong>"+move.user.name+"</strong>, moved: "+move.x+":"+move.y+"<br/>";
-
+//    var messages = document.getElementById("message");
+//    messages.innerHTML += "<strong>"+move.user.name+"</strong>, moved: "+move.x+":"+move.y+"<br/>";
     game.grid[move.y][move.x].clicked()
-
   }
 
   function printJoined(user) {
-    var messages = document.getElementById("message");
-    messages.innerHTML += "<strong>"+user.name+"</strong>, joined<br/>";
+//    var messages = document.getElementById("message");
+//    messages.innerHTML += "<strong>"+user.name+"</strong>, joined<br/>";
   }
 
   function initRemoting(user) {
@@ -54,3 +47,9 @@
 Pusher.log = function(message) {
   if (window.console && window.console.log) window.console.log(message);
 };
+
+window['GamePlayer'] = {id:'123',
+                        name:"Jo Blogs",
+                        picture:"https://secure.gravatar.com/avatar/83495e6101c2561c3f7332db3bbe82f9?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png"};
+
+
