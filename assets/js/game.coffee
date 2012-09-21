@@ -33,6 +33,7 @@ class Cell
     else
       message('potato already taken')
     @$html.replaceWith @toHtml()
+    @game.overCheck()
 
 
 window.Cell = Cell
@@ -118,8 +119,14 @@ class Game
     @$game.append @$scores
     @updateScores()
 
+  overCheck: ->
+    over = true
+    for row in @grid
+      for cell in row
+        over = false if cell.state == 'blank'
+    if over
+      window.alert('Game Over!')
       
-
 
 
 window.Game = Game
