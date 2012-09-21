@@ -1,3 +1,3 @@
 $ ->
-  console?.log "we are here!"
+  window.game = new Game(5)
 
