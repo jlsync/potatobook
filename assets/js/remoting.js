@@ -25,7 +25,7 @@
     var messages = document.getElementById("message");
     messages.innerHTML += "<strong>"+move.user.name+"</strong>, moved: "+move.x+":"+move.y+"<br/>";
 
-    game.grid[move.y][move.x].clicked()
+    game.grid[move.y][move.x].clicked(move.user.name)
 
   }
 
