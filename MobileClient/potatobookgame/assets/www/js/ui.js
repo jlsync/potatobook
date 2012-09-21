@@ -21,7 +21,7 @@ function openPage(pageName, ignoreHistoryPush) {
   
   page.style.display = "block";
   
-  title = (pageName == 'root') ? 'Hackbook' : pageName.replace(/-/g, ' ');
+  title = (pageName == 'root') ? 'PotatoBook' : pageName.replace(/-/g, ' ');
   document.getElementById('title').innerHTML = title;
   
   if (ignoreHistoryPush != true) {

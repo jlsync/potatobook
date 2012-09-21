@@ -1,7 +1,9 @@
-<html xmlns:og="http://ogp.me/ns" xmlns:fb="http://www.facebook.com/2008/fbml" lang="en" manifest="hackbook.manifest">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <title>Potato Game</title>
-  <!-- See https://developers.facebook.com/docs/opengraph/ -->
+
+<title>Cordova</title>
+<!-- See https://developers.facebook.com/docs/opengraph/ -->
   <meta property="og:title" content="The Awesome Potato Game" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="http://apps.facebook.com/mobile-start/" />
@@ -20,15 +22,14 @@
   
   <!-- See http://davidbcalhoun.com/2010/viewport-metatag for information on the viewport tag. -->
   <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="./css/game.css">
-  <script src="game.js"> </script>
-  
-</head>
 
+ <link rel='stylesheet' href='./css/style.css' />
+    <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+    <link rel='stylesheet' href='./css/game.css'>
+    <script src='game.js'></script>
+</head>
 <body>
+
   <!-- This initializes the Facebook JS SDK. -->
   <div id="fb-root"></div>
   <!--<script src=" http://connect.facebook.net/en_US/all.js"></script>-->
@@ -39,7 +40,7 @@
   	<script src="facebook_js_sdk.js"></script>
   
   <div id="header">
-    <div id="back-link" onclick="openPage('root')"><div id="back">&lt; Back</div></div>
+    
     <div id="title">Title</div>
 
     <div id="right-block">
@@ -57,37 +58,33 @@
     <div id="msg"></div>
   </div>
   
-  <!-- Page: Homepage -->
-  <div id="page-root" class="page">
-      <div class="show_when_connected">
-        <div id="welcome"><img id="user-picture" 
-        /><br 
-        /><span 
-        id="user-name">
-        
-        </span>
-        
-        <h1>PotatoBook</h1>
-    	<p>Welcome to PotatoBook</p>
-    	<div id="game"></div>
-    	<div id="message" class="message"></div>
-        </div>
-         
-      </div>
 
-     <ul>
+<h1>PotatoBook</h1>
+    <p>Welcome to PotatoBook</p>
+    <div id="game"></div>
+    <div id="message" class="message"></div>
+    
+ <ul>
         <li class="menu-item" onclick="openPage('Login');">Login and Permissions</li>
-		
+        <li class="menu-item" onclick="openPage('Requests');">Requests</li>
+        <li class="menu-item" onclick="openPage('News-Feed');">News Feed</li>
+        <li class="menu-item" onclick="openPage('Graph-API');">Graph API</li>
         <!-- <li class="menu-item" onclick="openPage('Credits');" id="credits-button">Credits</li>
         <li class="menu-item" onclick="openPage('Social-Plugins');">Social Plugins</li> --> 
-    </ul>
-   
+    </ul>    
+    
+    
     <div id="like-button"><fb:like url="http://www.cnn.com/" width="275"></fb:like></div>
   </div>
   
   <!-- Page: Login and Permissions -->
   <div id="page-Login" class="page"> 
-    
+    <p id="main-desc">
+      Facebook Platform uses the OAuth 2.0 protocol for logging a user into your app.
+      The Login button in the top right of this app, shown when you're logged out, is a good example.<br /><br />
+      <strong>Check out the mobile web app tutorial at <a href="http://developers.facebook.com/docs/mobile/web/build//">developers.facebook.com/docs/mobile/web/build/</a></strong>
+    </p>
+      
     <div class="section">
       <div class="show_when_not_connected">
         <h1>Logging the user in</h1>
@@ -110,23 +107,10 @@
         <div id="login_button" class="button" onclick="uninstallApp()" />Uninstall app</div>
       </div>
     </div>
-  
-    <div class="section">
-      <h1>Asking for extended permissions</h1>
-      <p>
-        If your app needs more than this basic information to function, you must request specific permissions from the user.
-        For example, you might prompt the user to grant access to their Likes in order to recommend related content for them.
-      </p>
-      
-      <div id="extended_permission_button" class="button button-requires-connect" onclick="promptExtendedPermissions()" />Grant the 'user_likes' permission</div>
-      
-      <div class="info-requires-connect">You need to login before you can use this functionality.</div>
-    </div>
-  </div>
-
-
-  
-  <!--<script src="js/_config.js"></script>-->
+    
+    
+    
+   <!--<script src="js/_config.js"></script>-->
   <script src="js/ui.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/feed.js"></script>
@@ -134,7 +118,7 @@
   <script src="js/requests.js"></script>
   <!--<script src="js/credits.js"></script>-->
   
-  
+  <script src="game.js"> </script>
   
   <script>
   if ((typeof Cordova == 'undefined') || (typeof cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
