@@ -14,16 +14,18 @@ class Cell
     @state = state
 
   toHtml: ->
-    $html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
-    cell = @
-    $html.on 'click', () ->
-      if cell.state == "blank"
-        cell.state = "taken"
-        score = cell.game.score(cell)
-        message("good play at #{cell.x}, #{cell.y}, score: #{score}")
-      else
-        message('potato already taken')
-      $html.replaceWith cell.toHtml()
+    @$html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
+    @$html.on 'click', @clicked
+
+  clicked: () ->
+    if @state == "blank"
+      @state = "taken"
+      score = @game.score(@)
+      message("good play at #{@x}, #{@y}, score: #{score}")
+      sendMove(@x, @y)
+    else
+      message('potato already taken')
+    @$html.replaceWith @toHtml()
 
 
 
@@ -80,11 +82,9 @@ class Game
     s = 1
     for num in [1..@size]
       if cxy = @grid[cell.y - num]?[cell.x - num]
-        console.log 'cxy', cxy
         s += 1
         full = false if cxy.state == "blank"
       if cxy = @grid[cell.y + num]?[cell.x + num]
-        console.log 'cxy', cxy
         s += 1
         full = false if cxy.state == "blank"
     if full == true and s > 1

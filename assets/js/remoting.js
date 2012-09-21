@@ -51,13 +51,13 @@
 
   initRemoting(user);
 
-  function sendMove() {
-    var move = {x: Math.floor(Math.random()*5),
-                y:Math.floor(Math.random()*5),
+  window.sendMove = function sendMove(x,y) {
+    var move = {x: x,
+                y: y,
                 user: user};
-    printMove(move);
     channel.trigger('client-moved', move);
   }
+
 
 })(window, Pusher);
 
