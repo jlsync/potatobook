@@ -9,10 +9,11 @@ var pusher = new Pusher({
 var gameCount = 0
   , awaitingGame = null;
 
-/*
- * GET home page.
- */
 exports.index = function(req, res){
+  res.render('index', { title: 'PotatoBook' });
+};
+
+exports.start_game = function(req, res){
   var privateChannel;
   if( !!awaitingGame ) {
     privateChannel = awaitingGame;
@@ -20,7 +21,7 @@ exports.index = function(req, res){
   } else {
     privateChannel = awaitingGame = "private-game"+(gameCount++)
   }
-  res.render('index', { title: 'PotatoBook',channel: privateChannel, awaiting: !!awaitingGame });
+  res.send(200, { channel: privateChannel, awaiting: !!awaitingGame });
 };
 
 exports.pusher_auth = function(req, res){

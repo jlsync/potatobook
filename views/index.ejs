@@ -2,15 +2,11 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script type="text/javascript">
-      var channelId = '<%= channel %>';
-    </script>
     <%- css('app.css') %>
     <%- js('app.js') %>
   </head>
   <body>
-    <h1><%= title %> : <%= channel %></h1>
+    <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <div id="game"></div>
     <button onclick="sendMove()">move</button>
