@@ -26,11 +26,6 @@ exports.pusher_auth = function(req, res){
 };
 
 
-
-
-
-
-
 exports.start = function(req, res){
 
   var data = { name: "Joe", message_count: 23 };
