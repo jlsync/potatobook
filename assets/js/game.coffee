@@ -1,11 +1,29 @@
 
+
+message = (text) ->
+  console?.log "message: #{text}"
+  $('#message').text text
+
+
+
+
 class Cell
 
-  constructor: (state) ->
+  constructor: (state = "blank") ->
     @state = state
 
   toHtml: ->
-    "<div class=\"cell\ #{@state}\">#{@state}</div>"
+    $html = $("<div class=\"cell\ #{@state}\">#{@state}</div>")
+    cell = @
+    $html.on 'click', () ->
+      if cell.state == "blank"
+        cell.state = "taken"
+        message('good play')
+      else
+        message('potato already taken')
+      $html.replaceWith cell.toHtml()
+
+
 
 
 class Game
