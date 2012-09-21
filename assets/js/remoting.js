@@ -24,6 +24,9 @@
   function printMove(move) {
     var messages = document.getElementById("message");
     messages.innerHTML += "<strong>"+move.user.name+"</strong>, moved: "+move.x+":"+move.y+"<br/>";
+
+    game.grid[move.y][move.x].clicked()
+
   }
 
   function printJoined(user) {

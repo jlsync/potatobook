@@ -30,6 +30,7 @@ class Cell
     @$html.replaceWith @toHtml()
 
 
+window.Cell = Cell
 
 # The Game grid of Cells [y,x] ( y down, x across)
 #
